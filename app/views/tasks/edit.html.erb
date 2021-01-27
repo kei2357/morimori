@@ -1,0 +1,18 @@
+<%= form_with model:@task, url:user_tasks_path, method: :patch, local:true do |f| %>
+
+    <div class="form-group">
+        <%= f.label :name, '名前' %>
+        <%= f.text_field :name, class: 'form-control', id:'task_name' %>
+  
+    <div class="form-group">
+        <%= f.label :description, '本文' %>
+        <%= f.text_area :description, rows: 5, class: 'form-control', id: 'task_description' %>
+    </div>
+    <%= f.submit '更新', class: 'btn btn-primary' %>
+<% end %>
+ 
+ 
+ 
+ 
+ 
+
