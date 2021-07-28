@@ -44,7 +44,7 @@ textarea {
   padding: 0px 15px;
   font-weight: normal;
   color: #333333;
-
+  background-color: #ffffff00;
 }
 
 .col-md-7 {
@@ -150,14 +150,18 @@ li .header-list{
   　　color: #fff
   　　;&:hover {
     color: silver !important;
+    background-color: #008080 !important;
+    
   }
 }
 
 #dropdown-title{
   color: #fff !important; 
+  background-color: #008080;
   &:hover {
     color: silver !important;
-    text-decoration: none;
+    // text-decoration: none;
+    background-color: #008080 !important;
   }
 }
 
