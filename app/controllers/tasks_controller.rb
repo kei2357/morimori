@@ -7,7 +7,6 @@ class TasksController < ApplicationController
   def show
     @user = User.find(params[:user_id])
     @task = Task.find(params[:id])
-  
   end
 
   def new
@@ -17,9 +16,14 @@ class TasksController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @task = @user.tasks.build(task_params)
-    @task.save
-    redirect_to user_tasks_url @user, notice: "登録しました"
+    if@task.save
+      flash[:success] = "タスクを新規作成しました。"
+      redirect_to user_tasks_url @user
+    else
+      render
+    end
   end
+  
 
   def edit
     @user = User.find(params[:user_id])
