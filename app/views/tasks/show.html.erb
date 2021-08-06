@@ -15,8 +15,7 @@
         <tr>
           <th class="active"><%= Task.human_attribute_name :description %></th>
           <td>
-              <%= @task.description %>
-              <%= auto_link(safe_join(@task.description.split("\n"), tag(:br))) %>
+              <%= auto_link(simple_format(@task.description), html: {target: '_blank'}) %>
           </td>
         </tr>
         <tr>
