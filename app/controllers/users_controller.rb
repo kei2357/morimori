@@ -1,4 +1,11 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: %i(show edit update destroy)
+  before_action :logged_in_user, only: %i(index show edit update destroy)
+  before_action :admin_user, only: %i(index destroy)
+  before_action :correct_user, only: %i(edit update)
+  before_action :admin_or_correct, only: %i(show)  
+  
+  
   def index
     @users = User.paginate(page: params[:page])
   end
@@ -18,7 +25,7 @@ class UsersController < ApplicationController
       flash[:success] = '新規作成に成功しました。'
       redirect_to @user
     else
-      render :newt
+      render :new
     end
   end
   
@@ -49,4 +56,10 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
+
+    
+    def set_user
+      @user = User.find(params[:id])
+    end
 end
+
