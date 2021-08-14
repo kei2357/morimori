@@ -7,13 +7,10 @@ before_action :correct_user
   
   
   def index
-    
-    @tasks = Task.all
+    @tasks = @user.tasks
   end
 
   def show
-   
-    @task = Task.find(params[:id])
   end
 
   def new
@@ -21,27 +18,21 @@ before_action :correct_user
   end
 
   def create
-  
     @task = @user.tasks.build(task_params)
     if@task.save
       flash[:success] = "タスクを新規作成しました。"
       redirect_to user_tasks_url @user
     else
-      render
+      render :new
     end
   end
   
 
   def edit
-　
-    @task = @user.tasks.find_by(id: params[:id])
   end
   
 
   def update
-    
-     @task = @user.tasks.find_by(id: params[:id])
-     
     if @task.update_attributes(task_params)
       flash[:success] = "タスクを更新しました。"
       redirect_to user_task_url(@user, @task)
@@ -51,7 +42,6 @@ before_action :correct_user
   end
 
   def destroy
-    
     @task.destroy
     redirect_to user_tasks_path, notice: "削除しました"
   end

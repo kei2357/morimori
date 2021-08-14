@@ -3,7 +3,7 @@
 <%= link_to '新規作成', new_user_task_url %>
 
 <table class="table">
-　<thead>
+ <thead>
     <tr>
     <th>名称</th>
     <th>作成日</th>
@@ -12,12 +12,12 @@
   <tbody>
   <% @tasks.each do |task| %>
     <tr>
-      <td><%= link_to task.name,  user_task_path(@user, task) %></td>
+      <td><%= link_to task.name, user_task_path(@user, task) %></td>
       <td><%= task.created_at %></td>
        <td>
               <%= link_to "編集", edit_user_task_path(@user, task), class: "btn btn-success" %>
               <%= link_to "削除", user_task_path(@user, task), method: :delete,
-              data: { confirm: "「#{task.name}」を削除します。よろしいですか？" }, class: "btn btn-danger" %>
+              data: { confirm: " #{task.name}を削除します。よろしいですか？" }, class: "btn btn-danger" %>
        </td>
     </tr>
   <% end %>
